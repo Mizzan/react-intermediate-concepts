@@ -1,27 +1,16 @@
 import "./App.css";
-import Home from "./components/Home/Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import NotFound from "./components/NotFound/NotFound";
-import FriendDetail from "./components/FriendDetail.js/FriendDetail";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import Shipment from "./components/Shipment/Shipment";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/friend/:friendId">
-          <FriendDetail />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="container">
+      <Header></Header>
+      <Home></Home>
+      <Shipment></Shipment>
+    </div>
   );
 }
 
