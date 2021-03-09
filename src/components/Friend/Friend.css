@@ -1,0 +1,5 @@
+.friend-container {
+  box-sizing: border-box;
+  border: 2px solid dodgerblue;
+  padding: 20px;
+}
