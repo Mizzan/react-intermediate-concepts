@@ -1,46 +1,33 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import About from "./components/About/About";
-import Home from "./components/Home/Home";
-import NotFound from "./components/NotFound/NotFound";
-import PostDetail from "./components/PostDetail/PostDetail";
+import { ThumbUp, ThumbDown } from "@material-ui/icons";
+import { useState } from "react";
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
-        </nav>
+  const [likeColor, setLikeColor] = useState("");
+  const [disLikeColor, setdisLikeColor] = useState("");
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/post/:id">
-            <PostDetail />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+  const handleLike = () => {
+    const color = likeColor ? "" : "primary";
+    setLikeColor(color);
+  };
+  const handleDisLike = () => {
+    const color = disLikeColor ? "" : "secondary";
+    setdisLikeColor(color);
+  };
+
+  return (
+    <div>
+      <ThumbUp
+        onClick={handleLike}
+        color={likeColor}
+        style={{ fontSize: 60 }}
+      ></ThumbUp>
+      <ThumbDown
+        onClick={handleDisLike}
+        color={disLikeColor}
+        style={{ fontSize: 60 }}
+      ></ThumbDown>
+    </div>
   );
 }
 
